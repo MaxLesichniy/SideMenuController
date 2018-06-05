@@ -28,13 +28,13 @@ extension SideMenuController {
     
     func configureGestureRecognizersForPositionUnder() {
         
-        let panLeft = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleCenterPanelPanLeft))
-        panLeft.edges = .left
-        panLeft.delegate = self
-        
-        let panRight = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleCenterPanelPanRight))
-        panRight.edges = .right
-        panRight.delegate = self
+//        let panLeft = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleCenterPanelPanLeft))
+//        panLeft.edges = .left
+//        panLeft.delegate = self
+//
+//        let panRight = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleCenterPanelPanRight))
+//        panRight.edges = .right
+//        panRight.delegate = self
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         tapRecognizer.delegate = self
@@ -42,8 +42,9 @@ extension SideMenuController {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleCenterPanelPan))
         panGesture.delegate = self
         
-        centerPanel.addGestureRecognizer(panLeft)
-        centerPanel.addGestureRecognizer(panRight)
+//        centerPanel.addGestureRecognizer(panLeft)
+//        centerPanel.addGestureRecognizer(panRight)
+        centerPanel.addGestureRecognizer(panGesture)
         centerPanel.addGestureRecognizer(tapRecognizer)
     }
     
