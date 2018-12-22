@@ -418,7 +418,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return sideViewController != nil
     }
     
-    fileprivate var previousStatusBarHeight: CGFloat = DefaultStatusBarHeight
+    fileprivate var previousStatusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
     fileprivate var statusBarHeight: CGFloat {
         return UIApplication.shared.statusBarFrame.size.height > 0 ? UIApplication.shared.statusBarFrame.size.height : DefaultStatusBarHeight
     }
