@@ -35,11 +35,11 @@ extension SideMenuController {
         
         let leftSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleLeftSwipe))
         leftSwipeRecognizer.delegate = self
-        leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirection.left
+        leftSwipeRecognizer.direction = .left
         
         let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleRightSwipe))
         rightSwipeGesture.delegate = self
-        rightSwipeGesture.direction = UISwipeGestureRecognizerDirection.right
+        rightSwipeGesture.direction = .right
         
         centerPanelOverlay.addGestureRecognizer(tapRecognizer)
         
@@ -52,7 +52,7 @@ extension SideMenuController {
         }
     }
     
-    func handleSidePanelPan(_ recognizer: UIPanGestureRecognizer){
+    @objc func handleSidePanelPan(_ recognizer: UIPanGestureRecognizer){
         
         guard canDisplaySideController else {
             return
@@ -136,21 +136,21 @@ extension SideMenuController {
         
         let updated = sidePanel.frame != destinationFrame
         
-        UIView.panelAnimation(duration, animations: { () -> () in
+        UIView.panelAnimation(duration, animations: {
             let alpha = CGFloat(hidden ? 0 : 1)
             self.centerPanelOverlay.alpha = alpha
             self.set(statusUnderlayAlpha: alpha)
             self.sidePanel.frame = destinationFrame
-            }, completion: { _ in
-                completion?(updated)
+            }, completion: {
+            completion?(updated)
         })
     }
     
-    func handleLeftSwipe(){
+    @objc func handleLeftSwipe() {
         handleHorizontalSwipe(toLeft: true)
     }
     
-    func handleRightSwipe(){
+    @objc func handleRightSwipe() {
         handleHorizontalSwipe(toLeft: false)
     }
     
